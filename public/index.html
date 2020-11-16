@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socket server </title>
+</head>
+<body>
+    <h1>acceso denegado</h1>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var cliente = io();
+
+        cliente.on('connect', function(){
+            console.log("conectado del servidor");
+        });
+        
+        cliente.on('disconnect', function(){
+            console.log("desconectado del servidor");
+        });
+        cliente.emit('mensaje', {nombre:"lalo"})
+        cliente.on("mensaje", function(res){
+            console.log("escuchando: " ,res)
+        });
+
+
+    </script>
+</body>
+</html>
